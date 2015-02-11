@@ -1,0 +1,44 @@
+{
+  "name": "pipelisten",
+  "version": "0.0.1",
+  "description": "Easily combine multiple outputs. Allowing you to filter, examine and debug multiple processes at once.",
+  "main": "js/index.jsx",
+  "scripts": {
+    "watch": "watchify   -d js/index.jsx -o web/bundle.js",
+    "build": "browserify -g uglifyify js/index.jsx -o web/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/Sean-Der/pipelisten.git"
+  },
+  "keywords": [],
+  "author": "Sean-Der",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sean-Der/pipelisten/issues"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-css",
+      [
+        "reactify",
+        {
+          "es6": true
+        }
+      ]
+    ]
+  },
+  "browserify-css": {
+    "autoInject": true,
+    "minify": true,
+    "rootDir": "."
+  },
+  "devDependencies": {
+    "browserify": "^8.1.3",
+    "browserify-css": "^0.2.0",
+    "react": "^0.12.2",
+    "reactify": "^1.0.0",
+    "uglifyify": "^3.0.1",
+    "watchify": "^2.3.0"
+  }
+}

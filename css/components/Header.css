@@ -1,0 +1,29 @@
+.header-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  align-items: flex-end;
+
+  border-bottom: 5px solid;
+  margin-top: 5px;
+}
+
+.header-container > div:first-child {
+  text-align: center;
+  margin-right: 5em;
+}
+.header-container > div:first-child > h1{
+  margin-bottom: -.3em;
+  margin-top: 0;
+}
+
+.header-container > div:nth-child(2) {
+  align-self: flex-start;
+  flex-shrink: 3;
+}
+.header-container > div:nth-child(2) .input-row {
+  display: inline-block;
+  padding-right: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+}
