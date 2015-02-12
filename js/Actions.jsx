@@ -2,7 +2,11 @@ var Reflux = require('reflux');
 
 module.exports = Reflux.createActions([
   'lineAdd',
+  'linesSet',
+
   'regexAdd',
-  'regexRemove',
+  'regexDelete',
   'regexUpdate',
+  'regexesStore',
+
 ]);
