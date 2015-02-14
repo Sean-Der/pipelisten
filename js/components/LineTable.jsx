@@ -7,7 +7,7 @@ module.exports = React.createClass({
 
   onLineStoreChange: function(lines) {
     this.setState({
-      lines: lines
+      lines: lines.reverse()
     });
   },
 
@@ -29,7 +29,7 @@ module.exports = React.createClass({
           {this.state.lines.map(function(line){
             return (
                 <tr>
-                    <td> {line.time}   </td>
+                    <td> {line.start}   </td>
                     <td> {line.prefix} </td>
                     <td> {line.line}   </td>
                 </tr>
