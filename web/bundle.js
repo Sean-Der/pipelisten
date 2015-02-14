@@ -11,7 +11,7 @@ var React=require("react"),Reflux=require("reflux"),RegexStore=require("../store
 
 
 },{"../Actions.jsx":2,"../stores/RegexStore.jsx":7,"lodash":11,"react":157,"reflux":158}],4:[function(require,module,exports){
-var React=require("react"),Reflux=require("reflux"),LineStore=require("../stores/LineStore.jsx");module.exports=React.createClass({displayName:"exports",mixins:[Reflux.listenTo(LineStore,"onLineStoreChange")],onLineStoreChange:function(e){this.setState({lines:e.reverse()})},getInitialState:function(){return{lines:[]}},render:function(){return React.createElement("table",{className:"table line-table"},React.createElement("thead",null,React.createElement("tr",null,React.createElement("th",null,"Time"),React.createElement("th",null,"Prefix"),React.createElement("th",null,"Line"))),React.createElement("tbody",null,this.state.lines.map(function(e){return React.createElement("tr",null,React.createElement("td",null," ",e.start,"   "),React.createElement("td",null," ",e.prefix," "),React.createElement("td",null," ",e.line,"   "))})))}});
+var React=require("react"),Reflux=require("reflux"),LineStore=require("../stores/LineStore.jsx");module.exports=React.createClass({displayName:"exports",mixins:[Reflux.listenTo(LineStore,"onLineStoreChange")],onLineStoreChange:function(e){this.setState({lines:e})},getInitialState:function(){return{lines:[]}},render:function(){return React.createElement("table",{className:"table line-table"},React.createElement("thead",null,React.createElement("tr",null,React.createElement("th",null,"Time"),React.createElement("th",null,"Prefix"),React.createElement("th",null,"Line"))),React.createElement("tbody",null,this.state.lines.map(function(e){return React.createElement("tr",{key:e.id},React.createElement("td",null," ",e.start,"   "),React.createElement("td",null," ",e.prefix," "),React.createElement("td",null," ",e.line,"   "))})))}});
 
 
 },{"../stores/LineStore.jsx":6,"react":157,"reflux":158}],5:[function(require,module,exports){
@@ -19,7 +19,7 @@ require("../css/index.css"),require("./stores/WebsocketConnection.jsx");var Reac
 
 
 },{"../css/index.css":1,"./components/Header.jsx":3,"./components/LineTable.jsx":4,"./stores/WebsocketConnection.jsx":8,"react":157}],6:[function(require,module,exports){
-var Reflux=require("reflux"),Actions=require("../Actions.jsx"),_=require("lodash");const MAX_LINES=500;module.exports=Reflux.createStore({lines:[],listenables:Actions,onLineAdd:function(e){this.lines.length>=MAX_LINES&&this.lines.shift(),this.lines.push(e),this.trigger(this.lines)},onLinesSet:function(e){this.lines=e,this.trigger(this.lines)}});
+var Reflux=require("reflux"),Actions=require("../Actions.jsx"),_=require("lodash");const MAX_LINES=500;module.exports=Reflux.createStore({lines:[],listenables:Actions,onLineAdd:function(e){this.lines.length>=MAX_LINES&&this.lines.pop(),this.lines.unshift(e),this.trigger(this.lines)},onLinesSet:function(e){this.lines=e,this.trigger(this.lines)}});
 
 
 },{"../Actions.jsx":2,"lodash":11,"reflux":158}],7:[function(require,module,exports){

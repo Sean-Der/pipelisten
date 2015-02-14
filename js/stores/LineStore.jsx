@@ -10,10 +10,10 @@ module.exports = Reflux.createStore({
     listenables: Actions,
     onLineAdd: function(line) {
       if (this.lines.length >= MAX_LINES) {
-        this.lines.shift();
+        this.lines.pop();
       }
 
-      this.lines.push(line);
+      this.lines.unshift(line);
       this.trigger(this.lines);
    },
    onLinesSet: function(lines) {
